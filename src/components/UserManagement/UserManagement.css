@@ -1,0 +1,219 @@
+/* UserManagement.css */
+
+/* General Styles */
+.UserManagementContainer {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.headings {
+  background-color: rgb(51, 51, 113);
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  margin: 20px;
+}
+.formContainer {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.formContainer input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.formContainer button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.formContainer button:hover {
+  background-color: #218838;
+}
+
+.userTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin: 20px 0; /* Added margin of 20px */
+}
+
+.userTable th,
+.userTable td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.userTable th {
+  background-color: #343a40;
+  color: white;
+}
+
+.userTable td button {
+  padding: 5px 10px;
+  margin: 2px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.userTable td button:hover {
+  opacity: 0.8;
+}
+
+.userTable td .statusButton {
+  background-color: #007bff;
+  color: white;
+}
+
+.userTable td .updateButton {
+  background-color: #ffc107;
+  color: black;
+}
+
+.userTable td .deleteButton {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+  .formContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .formContainer input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .formContainer button {
+    width: 100%;
+  }
+
+  .userTable {
+    font-size: 0.8rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .userTable th,
+  .userTable td {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .userTable th {
+    background-color: #343a40;
+    display: none; /* Hide table headers on mobile */
+  }
+
+  .userTable td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .userTable td {
+    text-align: left;
+  }
+
+  .userTable tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .formContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .formContainer input,
+  .formContainer button {
+    flex: 1 1 45%;
+    margin: 5px;
+  }
+
+  .userTable {
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  .userTable th,
+  .userTable td {
+    padding: 8px;
+  }
+
+  .userTable th {
+    display: none; /* Hide table headers on tablet */
+  }
+
+  .userTable td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .userTable td {
+    text-align: left;
+  }
+
+  .userTable tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+}
+
+/* Laptop Styles */
+@media (min-width: 1025px) {
+  .formContainer {
+    flex-direction: row;
+  }
+
+  .formContainer input,
+  .formContainer button {
+    margin: 0 10px;
+  }
+
+  .userTable {
+    font-size: 1rem;
+  }
+
+  .userTable th,
+  .userTable td {
+    padding: 10px;
+  }
+
+  .userTable th {
+    display: table-cell;
+  }
+
+  .userTable tr {
+    display: table-row;
+    margin-bottom: 0;
+  }
+
+  .userTable td:before {
+    content: none;
+  }
+}

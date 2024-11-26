@@ -1,0 +1,146 @@
+/* .heading {
+  color: white;
+  background-color: rgb(35, 87, 155);
+  padding: 10px;
+  text-align: center;
+  margin: 20px 10px;
+  border-radius: 10px;
+}
+
+.btn {
+  color: rgb(1, 11, 43);
+  background-color: rgb(218, 205, 29);
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: rgb(183, 171, 7);
+}
+
+.navButtons {
+  align-items: center;
+} */
+
+/* Layout.css */
+
+/* General Styles */
+.LayoutContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  /* background-color: #f8f9fa; */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(222, 14, 14, 0.1);
+}
+
+.heading {
+  font-size: 2rem;
+  color: #343a40;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.navButtons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 150px; /* Set the same width for all buttons */
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.usersButton {
+  background-color: #6f42c1;
+}
+
+.usersButton:hover {
+  background-color: #563d7c;
+}
+
+.rolesButton {
+  background-color: #28a745;
+}
+
+.rolesButton:hover {
+  background-color: #218838;
+}
+
+.permissionsButton {
+  background-color: #17a2b8;
+}
+
+.permissionsButton:hover {
+  background-color: #138496;
+}
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .navButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%; /* Make the buttons full width on mobile */
+    margin-bottom: 10px;
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .heading {
+    font-size: 1.75rem;
+  }
+
+  .navButtons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn {
+    flex: 1 1 45%;
+    margin: 5px;
+  }
+}
+
+/* Laptop Styles */
+@media (min-width: 1025px) {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .navButtons {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .btn {
+    margin: 0 10px;
+  }
+}

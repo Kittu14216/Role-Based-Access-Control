@@ -1,0 +1,41 @@
+/* body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+input {
+  padding: 10px;
+  margin: 10px 0;
+  width: calc(100% - 22px);
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px 0;
+}
+
+h2 {
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .App {
+    padding: 10px;
+  }
+
+  input {
+    width: calc(100% - 12px);
+  }
+
+  button {
+    width: 100%;
+  }
+} */

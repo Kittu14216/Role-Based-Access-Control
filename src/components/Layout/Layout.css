@@ -31,19 +31,19 @@
 .LayoutContainer {
   background-color: white;
   display: flex;
-  margin: 80px 50px;
+  margin: 80px 20px;
   flex-direction: column;
   align-items: center;
-  padding: 60px;
-  /* background-color: #f8f9fa; */
+  /* padding: 60px; */
+  background-color: #f8f9fa;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(201, 5, 5, 0.798);
+  box-shadow: 0 4px 8px rgba(167, 40, 40, 0.686);
 }
 
 .heading1 {
   font-size: 1.5rem;
   color: #690b0b;
-  margin-bottom: 20px;
+  margin: 20px auto;
   text-align: center;
   font-family: "Roboto", sans-serif;
 }

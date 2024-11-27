@@ -1,57 +1,29 @@
-/* .heading {
-  color: white;
-  background-color: rgb(35, 87, 155);
-  padding: 10px;
-  text-align: center;
-  margin: 20px 10px;
-  border-radius: 10px;
-}
-
-.btn {
-  color: rgb(1, 11, 43);
-  background-color: rgb(218, 205, 29);
-  padding: 15px;
-  border-radius: 10px;
-  margin: 10px;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.btn:hover {
-  background-color: rgb(183, 171, 7);
-}
-
-.navButtons {
-  align-items: center;
-} */
-
-/* Layout.css */
-
 /* General Styles */
 .LayoutContainer {
   background-color: white;
   display: flex;
-  margin: 80px 20px;
+  margin: 100px 20px; /* Adjust margin to account for fixed nav */
   flex-direction: column;
   align-items: center;
-  /* padding: 60px; */
-  background-color: #f8f9fa;
+  padding: 20px;
+  max-width: 100%;
+  background-color: #f3f4f5;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(167, 40, 40, 0.686);
 }
 
 .heading1 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #690b0b;
-  margin: 20px auto;
+  margin: 10px auto;
   text-align: center;
   font-family: "Roboto", sans-serif;
 }
 
 .heading {
-  font-size: 2rem;
-  color: #343a40;
-  margin-bottom: 20px;
+  font-size: 16px;
+  color: #032a51;
+  margin-bottom: 5px;
   text-align: center;
   font-family: "Roboto", sans-serif;
 }
@@ -61,22 +33,23 @@
   justify-content: space-around;
   width: 100%;
   max-width: 600px;
+  margin-bottom: 0px;
 
-  margin-bottom: 20px;
+  /* background-color: #f8f9fa; */
+  padding: 10px 30px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 .btn {
   background-color: #007bff;
   color: white;
-  padding: 10px 40px;
-
+  padding: 8px 10px;
   border: none;
   border-radius: 5px;
   font-size: 1rem;
-  min-width: 300px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 150px; /* Set the same width for all buttons */
+  width: 200px; /* Set the same width for all buttons */
 }
 
 .btn:hover {
@@ -127,7 +100,7 @@
 /* Tablet Styles */
 @media (min-width: 601px) and (max-width: 1024px) {
   .heading {
-    font-size: 1.75rem;
+    font-size: 1.4rem;
   }
 
   .navButtons {
@@ -145,7 +118,7 @@
 /* Laptop Styles */
 @media (min-width: 1025px) {
   .heading {
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
 
   .navButtons {

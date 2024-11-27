@@ -1,197 +1,189 @@
-/* UserManagement.css */
-
-/* General Styles */
 .UserManagementContainer {
-  /* padding: 20px; */
-  /* min-width: 1200px; */
-  /* background-color: #f8f9fa; */
-  border-radius: 10px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
+
 .headings {
-  background-color: rgb(51, 51, 113);
-  color: white;
-  border-radius: 10px;
-  padding: 10px;
-  font-size: 20px;
   text-align: center;
-  margin: 20px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
 }
+
+.searchInput {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
 .formContainer {
   display: flex;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 15px;
   margin-bottom: 20px;
-  justify-content: center;
-  background: rgb(167, 180, 167);
-  padding: 10px 10px;
-  margin: auto;
-  border-radius: 10px;
-  max-width: 800px;
 }
 
-.formContainer input {
+.formContainer input,
+.formContainer select {
+  flex: 1;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 14px;
 }
 
-.formContainer button {
+.formContainer input:required::after,
+.formContainer select:required::after {
+  content: " *";
+  color: red;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.btnclick {
   padding: 10px 20px;
-  background-color: #28a745;
+  background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
+  flex-shrink: 0;
 }
 
-.formContainer button:hover {
-  background-color: #218838;
+.btnclick:disabled {
+  background-color: #ccc;
 }
 
 .userTable {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  margin: 20px 0; /* Added margin of 20px */
 }
 
 .userTable th,
 .userTable td {
-  padding: 10px;
   border: 1px solid #ddd;
-  text-align: center;
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
 }
 
 .userTable th {
-  background-color: #343a40;
-  color: white;
+  background-color: #f4f4f4;
 }
 
-.userTable td button {
+.updateButton,
+.deleteButton,
+.statusButton {
   padding: 5px 10px;
-  margin: 2px;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
 }
 
-.userTable td button:hover {
-  opacity: 0.8;
-}
-
-.userTable td .statusButton {
+.updateButton {
   background-color: #007bff;
   color: white;
 }
 
-.userTable td .updateButton {
-  background-color: #ffc107;
-  color: black;
-}
-
-.userTable td .deleteButton {
-  background-color: #dc3545;
+.deleteButton {
+  background-color: #e74c3c;
   color: white;
 }
 
-/* Mobile Styles */
+.statusButton {
+  background-color: #ffc107;
+  color: white;
+}
 @media (max-width: 600px) {
   .formContainer {
     flex-direction: column;
     align-items: center;
   }
-
-  .formContainer input {
+  .formContainer input,
+  .formContainer select {
     width: 100%;
     margin-bottom: 10px;
   }
-
   .formContainer button {
     width: 100%;
   }
-
   .userTable {
     font-size: 0.8rem;
     width: 100%;
     display: flex;
     flex-direction: column;
   }
-
   .userTable th,
   .userTable td {
     padding: 5px;
     display: flex;
     justify-content: space-between;
   }
-
   .userTable th {
     background-color: #343a40;
     display: none; /* Hide table headers on mobile */
   }
-
   .userTable td:before {
     content: attr(data-label);
     font-weight: bold;
     text-align: left;
   }
-
   .userTable td {
     text-align: left;
   }
-
   .userTable tr {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
   }
-}
-
-/* Tablet Styles */
+} /* Tablet Styles */
 @media (min-width: 601px) and (max-width: 1024px) {
   .formContainer {
     flex-direction: row;
     flex-wrap: wrap;
   }
-
   .formContainer input,
+  .formContainer select,
   .formContainer button {
     flex: 1 1 45%;
     margin: 5px;
   }
-
   .userTable {
     font-size: 0.9rem;
     width: 100%;
   }
-
   .userTable th,
   .userTable td {
     padding: 8px;
   }
-
   .userTable th {
     display: none; /* Hide table headers on tablet */
   }
-
   .userTable td:before {
     content: attr(data-label);
     font-weight: bold;
     text-align: left;
   }
-
   .userTable td {
     text-align: left;
   }
-
   .userTable tr {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
   }
-}
-
-/* Laptop Styles */
+} /* Laptop Styles */
 @media (min-width: 1025px) {
   .formContainer {
     flex-direction: row;
@@ -199,31 +191,75 @@
   .UserManagementContainer {
     min-width: 1200px;
   }
-
   .formContainer input,
+  .formContainer select,
   .formContainer button {
     margin: 0 10px;
   }
-
   .userTable {
     font-size: 1rem;
   }
-
   .userTable th,
   .userTable td {
     padding: 10px;
   }
-
   .userTable th {
     display: table-cell;
   }
-
   .userTable tr {
     display: table-row;
     margin-bottom: 0;
   }
-
   .userTable td:before {
     content: none;
   }
+} /* Add media queries */
+@media (max-width: 768px) {
+  .UserManagementContainer {
+    padding: 10px;
+  }
+  .searchInput {
+    width: 100%;
+    margin: 10px 0;
+    display: block;
+  }
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+  }
+} /* Center the search input */
+.searchInput {
+  width: 300px;
+  margin: 10px auto;
+  display: block;
+} /* Apply active button styles */
+button:active {
+  background-color: #51b300;
+  color: #ffffff;
+} /* Add mandatory * marks for input fields */
+input[required]::before,
+select[required]::before {
+  content: "*";
+  color: red;
+  margin-right: 5px;
+} /* Display warning messages below input fields */
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+} /* Add red-colored star symbols for required input fields */
+input[required]::before,
+select[required]::before {
+  content: "*";
+  color: red;
+  margin-right: 5px;
+  position: absolute;
+  left: -15px; /* Adjust as needed */
+  top: 50%;
+  transform: translateY(-50%);
+} /* Positioning adjustment to include space for the star */
+.formContainer input[type="email"],
+.formContainer input[type="text"],
+.formContainer select {
+  padding-left: 20px; /* Adjust as needed */
 }

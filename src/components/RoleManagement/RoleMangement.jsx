@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../firebaseConfig";
+import Modal from "../Modal/Modal"; // Import the Modal component
 import "./RoleManagement.css";
 
 const formatTimestamp = (timestamp) => {
@@ -20,10 +21,11 @@ export default function RoleManagement() {
   const [newRole, setNewRole] = useState({
     roleName: "",
     permissions: { read: true, write: false, delete: false },
-    // customAttrs: {},
   });
   const [isEditing, setIsEditing] = useState(false);
   const [currentRoleId, setCurrentRoleId] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,6 +50,15 @@ export default function RoleManagement() {
   };
 
   const handleAddRole = async () => {
+    const roleExists = roles.some(
+      (role) => role.roleName.toLowerCase() === newRole.roleName.toLowerCase()
+    );
+    if (roleExists) {
+      setIsModalOpen(true);
+      setModalMessage("Role name already exists.");
+      return;
+    }
+
     const newRoleObj = {
       ...newRole,
       createdAt: new Date(),
@@ -58,16 +69,12 @@ export default function RoleManagement() {
     setNewRole({
       roleName: "",
       permissions: { read: true, write: false, delete: false },
-      //   customAttrs: {},
     });
     setPermissions({ read: true, write: false, delete: false });
   };
 
   const handleUpdateRole = async () => {
-    const updatedRole = {
-      ...newRole,
-      updatedAt: new Date(),
-    };
+    const updatedRole = { ...newRole, updatedAt: new Date() };
     await db.collection("roles").doc(currentRoleId).update(updatedRole);
     setRoles(
       roles.map((role) =>
@@ -77,7 +84,6 @@ export default function RoleManagement() {
     setNewRole({
       roleName: "",
       permissions: { read: true, write: false, delete: false },
-      //   customAttrs: {},
     });
     setPermissions({ read: true, write: false, delete: false });
     setIsEditing(false);
@@ -85,11 +91,7 @@ export default function RoleManagement() {
   };
 
   const handleEditRole = (role) => {
-    setNewRole({
-      roleName: role.roleName,
-      permissions: role.permissions,
-      customAttrs: role.customAttrs,
-    });
+    setNewRole({ roleName: role.roleName, permissions: role.permissions });
     setPermissions(role.permissions);
     setIsEditing(true);
     setCurrentRoleId(role.id);
@@ -98,6 +100,10 @@ export default function RoleManagement() {
   const handleDeleteRole = async (roleId) => {
     await db.collection("roles").doc(roleId).delete();
     setRoles(roles.filter((role) => role.id !== roleId));
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -118,7 +124,7 @@ export default function RoleManagement() {
               name="read"
               checked={permissions.read}
               onChange={handlePermissionChange}
-            />
+            />{" "}
             Read
           </label>
           <label>
@@ -127,7 +133,7 @@ export default function RoleManagement() {
               name="write"
               checked={permissions.write}
               onChange={handlePermissionChange}
-            />
+            />{" "}
             Write
           </label>
           <label>
@@ -136,7 +142,7 @@ export default function RoleManagement() {
               name="delete"
               checked={permissions.delete}
               onChange={handlePermissionChange}
-            />
+            />{" "}
             Delete
           </label>
         </div>
@@ -146,13 +152,13 @@ export default function RoleManagement() {
           <button onClick={handleAddRole}>Add Role</button>
         )}
       </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal} message={modalMessage} />
       <table className="roleTable">
         <thead>
           <tr>
             <th>Role ID</th>
             <th>Role Name</th>
             <th>Permissions</th>
-
             <th>Created At</th>
             <th>Updated At</th>
             <th>Actions</th>
@@ -170,9 +176,6 @@ export default function RoleManagement() {
                   ))}
                 </div>
               </td>
-              {/* <td data-label="Custom Attributes">
-                {JSON.stringify(role.customAttrs)}
-              </td> */}
               <td data-label="Created At">{formatTimestamp(role.createdAt)}</td>
               <td data-label="Updated At">{formatTimestamp(role.updatedAt)}</td>
               <td data-label="Actions">

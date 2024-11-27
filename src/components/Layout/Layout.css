@@ -51,16 +51,19 @@
   justify-content: space-around;
   width: 100%;
   max-width: 600px;
+
   margin-bottom: 20px;
 }
 
 .btn {
   background-color: #007bff;
   color: white;
-  padding: 10px 20px;
+  padding: 10px 40px;
+
   border: none;
   border-radius: 5px;
   font-size: 1rem;
+  min-width: 300px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   width: 150px; /* Set the same width for all buttons */

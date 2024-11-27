@@ -3,6 +3,7 @@
 /* General Styles */
 .UserManagementContainer {
   padding: 20px;
+  /* min-width: 1200px; */
   background-color: #f8f9fa;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -20,6 +21,12 @@
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+  justify-content: center;
+  background: rgb(167, 180, 167);
+  padding: 10px 10px;
+  margin: auto;
+  border-radius: 10px;
+  max-width: 800px;
 }
 
 .formContainer input {
@@ -188,6 +195,9 @@
 @media (min-width: 1025px) {
   .formContainer {
     flex-direction: row;
+  }
+  .UserManagementContainer {
+    min-width: 1200px;
   }
 
   .formContainer input,

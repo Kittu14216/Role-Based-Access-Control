@@ -115,8 +115,8 @@ export default function UserManagement() {
               Select Role
             </option>
             {roles.map((role) => (
-              <option key={role.id} value={role.name}>
-                {role.name}
+              <option key={role.id} value={role.roleName}>
+                {role.roleName}
               </option>
             ))}
           </select>
@@ -130,7 +130,7 @@ export default function UserManagement() {
       <table className="userTable">
         <thead>
           <tr>
-            <th>User ID</th>
+            <th>User ID </th>
             <th>Email</th>
             <th>Name</th>
             <th>Roles</th>

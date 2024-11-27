@@ -29,13 +29,15 @@
 
 /* General Styles */
 .LayoutContainer {
+  background-color: white;
   display: flex;
+  margin: 80px 50px;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 60px;
   /* background-color: #f8f9fa; */
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(222, 14, 14, 0.1);
+  box-shadow: 0 4px 8px rgba(201, 5, 5, 0.798);
 }
 
 .heading1 {

@@ -38,6 +38,14 @@
   box-shadow: 0 4px 8px rgba(222, 14, 14, 0.1);
 }
 
+.heading1 {
+  font-size: 1.5rem;
+  color: #690b0b;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
+
 .heading {
   font-size: 2rem;
   color: #343a40;

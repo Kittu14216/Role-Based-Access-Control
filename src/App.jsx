@@ -18,10 +18,6 @@ const App = () => {
             element={<PermissionsManagement />}
           /> */}
         </Route>
-        <Route
-          path="/"
-          element={<h1>Welcome to VRV Security RBAC Dashboard</h1>}
-        />
       </Routes>
     </Router>
   );

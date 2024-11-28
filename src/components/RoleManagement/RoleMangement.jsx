@@ -11,6 +11,10 @@ const formatTimestamp = (timestamp) => {
   return date.toLocaleString();
 };
 
+const generateRoleId = (lastRoleId) => {
+  return (parseInt(lastRoleId) + 1).toString().padStart(6, "0");
+};
+
 export default function RoleManagement() {
   const [roles, setRoles] = useState([]);
   const [permissions, setPermissions] = useState({
@@ -26,11 +30,21 @@ export default function RoleManagement() {
   const [currentRoleId, setCurrentRoleId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
+  const [lastRoleId, setLastRoleId] = useState("000000");
 
   useEffect(() => {
     const fetchData = async () => {
       const rolesData = await db.collection("roles").get();
       setRoles(rolesData.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+
+      if (rolesData.docs.length > 0) {
+        const lastId = Math.max(
+          ...rolesData.docs.map((doc) => parseInt(doc.id))
+        )
+          .toString()
+          .padStart(6, "0");
+        setLastRoleId(lastId);
+      }
     };
     fetchData();
   }, []);
@@ -61,11 +75,13 @@ export default function RoleManagement() {
 
     const newRoleObj = {
       ...newRole,
+      id: generateRoleId(lastRoleId),
       createdAt: new Date(),
       updatedAt: new Date(),
     };
     const docRef = await db.collection("roles").add(newRoleObj);
     setRoles([...roles, { ...newRoleObj, id: docRef.id }]);
+    setLastRoleId(newRoleObj.id);
     setNewRole({
       roleName: "",
       permissions: { read: true, write: false, delete: false },
@@ -167,7 +183,9 @@ export default function RoleManagement() {
         <tbody>
           {roles.map((role) => (
             <tr key={role.id}>
-              <td data-label="Role ID">{role.id}</td>
+              <td data-label="Role ID" className="roleId">
+                {role.id}
+              </td>
               <td data-label="Role Name">{role.roleName}</td>
               <td data-label="Permissions">
                 <div>

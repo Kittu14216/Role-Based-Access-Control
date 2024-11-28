@@ -1,250 +1,129 @@
 /* RoleManagement.css */
 
-/* General Styles */
+/* General styles */
 .RoleManagementContainer {
   padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .headings {
-  background-color: rgb(51, 51, 113);
-  color: white;
-  border-radius: 10px;
-  padding: 10px;
-  font-size: 20px;
   text-align: center;
-  margin: 20px;
+  margin-bottom: 20px;
 }
 
 .roleformContainer {
   display: flex;
+  flex-direction: column;
   gap: 10px;
   margin-bottom: 20px;
-  justify-content: center;
-  background: rgb(167, 180, 167);
-  padding: 10px 10px;
-  margin: auto;
-  border-radius: 10px;
-  max-width: 800px;
 }
 
-.roleformContainer input {
-  height: 30px;
+.permissionsDropdown label {
+  margin-right: 10px;
+}
+
+button {
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-.roleformContainer button {
-  height: 30px;
-  padding: 10px 20px;
-  background-color: #28a745;
-  color: white;
   border: none;
+  background-color: #007bff;
+  color: white;
   border-radius: 5px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.roleformContainer button:hover {
-  background-color: #218838;
+button:disabled {
+  background-color: #cccccc;
 }
 
-.permissionsDropdown {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+.table-responsive {
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .roleTable {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
-  margin: 20px 0; /* Added margin of 20px */
+  font-size: 14px;
 }
 
 .roleTable th,
 .roleTable td {
-  padding: 10px;
   border: 1px solid #ddd;
-  text-align: center;
+  padding: 8px;
+  font-size: 13px;
 }
 
 .roleTable th {
-  background-color: #343a40;
-  color: white;
+  background-color: #f2f2f2;
+  text-align: center;
 }
 
-.roleTable td button {
+.roleTable td.roleId {
+  color: red;
+}
+
+.editButton,
+.deleteButton {
   padding: 5px 10px;
-  margin: 2px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.roleTable td button:hover {
-  opacity: 0.8;
-}
-
-.roleTable td .editButton {
+.editButton {
   background-color: #ffc107;
-  color: black;
+  margin-right: 3px;
 }
 
-.roleTable td .deleteButton {
+.deleteButton {
   background-color: #dc3545;
   color: white;
 }
 
-/* Mobile Styles */
-@media (max-width: 600px) {
-  .roleformContainer {
-    flex-direction: column;
-    align-items: center;
+/* Media queries for different screen sizes */
+@media (max-width: 768px) {
+  /* Tablet and mobile view */
+  .table-responsive {
+    overflow-x: auto;
   }
 
-  .roleformContainer input {
-    width: 100%;
-    margin-bottom: 10px;
-    font-size: 0.9rem; /* Decreased font size */
-    padding: 8px; /* Decreased padding */
-  }
-
-  .roleformContainer button {
-    width: 100%;
-    font-size: 0.9rem; /* Decreased font size */
-    padding: 8px; /* Decreased padding */
-  }
-
-  .roleTable {
-    font-size: 0.8rem;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
+  .roleTable,
+  .roleTable thead,
+  .roleTable tbody,
   .roleTable th,
-  .roleTable td {
-    padding: 5px;
-    display: flex;
-    justify-content: space-between;
+  .roleTable td,
+  .roleTable tr {
+    display: block;
   }
 
   .roleTable th {
-    background-color: #343a40;
-    display: none; /* Hide table headers on mobile */
+    display: none;
+  }
+
+  .roleTable td {
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
   }
 
   .roleTable td:before {
     content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     font-weight: bold;
-    text-align: left;
   }
 
-  .roleTable td {
-    text-align: left;
-  }
-
-  .roleTable tr {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-  }
-
-  .permissionsDropdown label input[type="checkbox"] {
-    transform: scale(0.8); /* Decrease checkbox size */
-    margin-right: 5px; /* Adjust spacing */
-  }
-}
-
-/* Tablet Styles */
-@media (min-width: 601px) and (max-width: 1024px) {
-  .roleformContainer {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .roleformContainer input,
-  .roleformContainer button {
-    flex: 1 1 45%;
-    margin: 5px;
+  .roleTable td:last-child {
+    border-bottom: 2px solid #ddd;
   }
 
   .roleTable {
-    font-size: 0.9rem;
-    width: 100%;
-  }
-
-  .roleTable th,
-  .roleTable td {
-    padding: 8px;
-  }
-
-  .roleTable th {
-    display: none; /* Hide table headers on tablet */
-  }
-
-  .roleTable td:before {
-    content: attr(data-label);
-    font-weight: bold;
-    text-align: left;
-  }
-
-  .roleTable td {
-    text-align: left;
-  }
-
-  .roleTable tr {
-    display: flex;
-    flex-direction: column;
+    font-size: 12px;
     margin-bottom: 10px;
   }
-}
 
-/* Laptop Styles */
-@media (min-width: 1025px) {
-  .roleformContainer {
-    flex-direction: row;
-  }
-
-  .RoleManagementContainer {
-    min-width: 1200px;
-  }
-
-  .roleformContainer input,
-  .roleformContainer button {
-    margin: 0 10px;
-  }
-
-  .permissionsDropdown {
-    flex-direction: row;
-    gap: 10px;
-  }
-
-  .roleTable {
-    font-size: 1rem;
-  }
-
-  .roleTable th,
   .roleTable td {
-    padding: 10px;
-  }
-
-  .roleTable th {
-    display: table-cell;
-  }
-
-  .roleTable tr {
-    display: table-row;
-    margin-bottom: 0;
-  }
-
-  .roleTable td:before {
-    content: none;
+    margin-bottom: 10px;
   }
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../firebaseConfig";
 import Modal from "../Modal/Modal"; // Import the Modal component
 import "./UserManagement.css";
+import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 
 const formatTimestamp = (timestamp) => {
   if (!timestamp) return "N/A";
@@ -159,7 +160,6 @@ export default function UserManagement() {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-
   return (
     <div className="UserManagementContainer">
       <h2 className="headings">User Management System</h2>
@@ -221,54 +221,63 @@ export default function UserManagement() {
         )}
       </div>
       <Modal isOpen={isModalOpen} onClose={closeModal} message={modalMessage} />
-      <table className="userTable">
-        <thead>
-          <tr>
-            <th>User ID</th>
-            <th>Email</th>
-            <th>Name</th>
-            <th>Roles</th>
-            <th>Status</th>
-            <th>Created At</th>
-            <th>Updated At</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredUsers.map((user) => (
-            <tr key={user.userId}>
-              <td data-label="User ID">{user.userId}</td>
-              <td data-label="Email">{user.email}</td>
-              <td data-label="Name">{toTitleCase(user.name)}</td>
-              <td data-label="Roles">{user.roles}</td>
-              <td data-label="Status">
-                <button
-                  className="statusButton"
-                  onClick={() => handleStatusChange(user.userId)}
-                >
-                  {user.status ? "Active" : "Inactive"}
-                </button>
-              </td>
-              <td data-label="Created At">{formatTimestamp(user.createdAt)}</td>
-              <td data-label="Updated At">{formatTimestamp(user.updatedAt)}</td>
-              <td data-label="Actions">
-                <button
-                  className="updateButton"
-                  onClick={() => handleEditUser(user)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="deleteButton"
-                  onClick={() => handleDeleteUser(user.userId)}
-                >
-                  Delete
-                </button>
-              </td>
+      <div className="table-responsive">
+        <table className="table table-hover userTable">
+          <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Email</th>
+              <th>Name</th>
+              <th>Roles</th>
+              <th>Status</th>
+              <th>Created At</th>
+              <th>Updated At</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredUsers.map((user) => (
+              <tr key={user.userId}>
+                <td data-label="User ID" className="userId">
+                  {user.userId}
+                </td>
+
+                <td data-label="Email">{user.email}</td>
+                <td data-label="Name">{toTitleCase(user.name)}</td>
+                <td data-label="Roles">{user.roles}</td>
+                <td data-label="Status">
+                  <button
+                    className="statusButton"
+                    onClick={() => handleStatusChange(user.userId)}
+                  >
+                    {user.status ? "Active" : "Inactive"}
+                  </button>
+                </td>
+                <td data-label="Created At">
+                  {formatTimestamp(user.createdAt)}
+                </td>
+                <td data-label="Updated At">
+                  {formatTimestamp(user.updatedAt)}
+                </td>
+                <td data-label="Actions">
+                  <button
+                    className="updateButton"
+                    onClick={() => handleEditUser(user)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="deleteButton"
+                    onClick={() => handleDeleteUser(user.userId)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

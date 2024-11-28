@@ -16,11 +16,6 @@ export default function Layout() {
         <NavLink to="/roles">
           <button className="btn rolesButton">Role Management</button>
         </NavLink>
-        {/* <NavLink to="permissions/">
-          <button className="btn permissionsButton">
-            Permission Management
-          </button>
-        </NavLink> */}
       </div>
       <Outlet />
     </div>
